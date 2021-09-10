@@ -23,6 +23,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joseph calla" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8q-VC-hWF">
                                 <rect key="frame" x="48" y="20" width="225" height="20.5"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="225" id="7CY-A0-agE"/>
                                     <constraint firstAttribute="height" constant="20.5" id="rFJ-34-kLm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -32,6 +33,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="17 hours ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ik7-Yb-6BK">
                                 <rect key="frame" x="281" y="20" width="80" height="14.5"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="KEq-U3-4bi"/>
                                     <constraint firstAttribute="width" constant="80" id="n4p-0J-HsM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -116,6 +118,7 @@
             <connections>
                 <outlet property="authorLabel" destination="f8q-VC-hWF" id="pC7-g3-YsW"/>
                 <outlet property="commentsLabel" destination="gUD-mf-Alx" id="tg5-nx-zRb"/>
+                <outlet property="hoursAgoLabel" destination="Ik7-Yb-6BK" id="cKN-Pa-l9v"/>
                 <outlet property="postImage" destination="pfk-21-LWg" id="7gL-Sy-O3d"/>
                 <outlet property="readNotificationImage" destination="ceO-sF-oEg" id="XEx-5R-ysm"/>
                 <outlet property="removeCellButton" destination="Bg4-1R-3BG" id="XhO-Ep-blt"/>
