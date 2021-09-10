@@ -15,9 +15,28 @@
                     <view key="view" contentMode="scaleToFill" id="0lS-jU-f1f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p2m-Ml-iiE">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="IeQ-oa-1uV" id="2hL-Jm-IX8"/>
+                                    <outlet property="delegate" destination="IeQ-oa-1uV" id="czw-ua-6KC"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="56I-W8-eOX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="56I-W8-eOX" firstAttribute="trailing" secondItem="p2m-Ml-iiE" secondAttribute="trailing" id="066-wY-yaO"/>
+                            <constraint firstItem="p2m-Ml-iiE" firstAttribute="top" secondItem="56I-W8-eOX" secondAttribute="top" id="1Bm-cK-o6h"/>
+                            <constraint firstItem="56I-W8-eOX" firstAttribute="bottom" secondItem="p2m-Ml-iiE" secondAttribute="bottom" id="BBH-31-y9E"/>
+                            <constraint firstItem="p2m-Ml-iiE" firstAttribute="leading" secondItem="56I-W8-eOX" secondAttribute="leading" id="viy-e8-gnk"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="redditPostTableView" destination="p2m-Ml-iiE" id="Vej-sd-DGy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJX-UV-qga" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
