@@ -9,14 +9,27 @@ import UIKit
 
 class RedditPostViewController: UIViewController {
     @IBOutlet weak var redditPostTableView: UITableView!
-    
+    let viewModel = RedditViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+        getPosts()
+    }
+    
+    private func setupView() {
         self.redditPostTableView.dataSource = self
         self.redditPostTableView.delegate = self
-        self.redditPostTableView.register(
-            UINib(nibName: "RedditTableViewCell", bundle: nil),
-            forCellReuseIdentifier: "cell")
+        
+        self.redditPostTableView.register(UINib(nibName: "RedditTableViewCell",
+                                                bundle: nil), forCellReuseIdentifier: "cell")
+    }
+    
+    private func getPosts() {
+        viewModel.getAllPosts {
+            DispatchQueue.main.async {
+                self.redditPostTableView.reloadData()
+            }
+        }
     }
 }
 
@@ -26,10 +39,10 @@ extension RedditPostViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = redditPostTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? RedditTableViewCell else { return UITableViewCell()}
         let cell = redditPostTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? RedditTableViewCell
         return cell!
     }
 }
+
 extension RedditPostViewController: UITableViewDelegate {
 }

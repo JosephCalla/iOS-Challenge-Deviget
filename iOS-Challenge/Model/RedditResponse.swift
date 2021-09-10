@@ -11,7 +11,7 @@ struct RedditResponse: Codable {
 
 struct RedditData: Codable {
     struct RedditChildrenData: Codable {
-        let data: RedditPost
+        let data: RedditPostResponse
     }
     let children: [RedditChildrenData]
     let after: String
