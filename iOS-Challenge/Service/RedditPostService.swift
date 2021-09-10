@@ -14,12 +14,12 @@ class RedditPostService {
     var dataTask: URLSessionDataTask?
     var errorMessage: String = ""
     let baseURL = "https://www.reddit.com/top.json"
+    var posts = [PostsResponse]()
     
-    
-    func getAllPosts(_ completion: @escaping () -> Void) {
+    func getAllPosts(_ completion: @escaping PostsResponse) {
         getPostsURL(after: nil, before: nil) {[unowned self] (data, errorMessage) in
             guard errorMessage == nil || (errorMessage?.isEmpty)! else { return }
-            completion()
+            completion(data, errorMessage)
         }
     }
     
