@@ -76,6 +76,7 @@ extension RedditPostViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedPostIndex = indexPath.item
+        (tableView.cellForRow(at: indexPath) as? RedditTableViewCell)?.hideUnRead()
         if let posts = viewModel.posts?[indexPath.row] {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "detail", sender: self)
