@@ -46,12 +46,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dismiss post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfr-yS-FBJ">
-                                <rect key="frame" x="48" y="173.5" width="72.5" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12430 comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUD-mf-Alx">
                                 <rect key="frame" x="263" y="173.5" width="98" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -65,14 +59,18 @@
                                     <constraint firstAttribute="width" constant="20" id="alf-AD-eOf"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bg4-1R-3BG">
-                                <rect key="frame" x="20" y="168" width="20" height="20"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bg4-1R-3BG">
+                                <rect key="frame" x="20" y="168" width="143" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="6C3-x0-FWd"/>
                                     <constraint firstAttribute="height" constant="20" id="fpT-Yu-vuq"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="X"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Dismiss post" image="xmark.rectangle" catalog="system">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissCell:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Pzl-xW-j89"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pfk-21-LWg">
                                 <rect key="frame" x="20" y="48.5" width="80" height="100"/>
@@ -87,15 +85,14 @@
                             <constraint firstItem="oAs-IR-lb6" firstAttribute="leading" secondItem="pfk-21-LWg" secondAttribute="trailing" constant="8" id="3jI-yD-Heq"/>
                             <constraint firstItem="f8q-VC-hWF" firstAttribute="top" secondItem="f1g-yH-xPh" secondAttribute="top" constant="20" id="9KL-sz-Lun"/>
                             <constraint firstItem="Bg4-1R-3BG" firstAttribute="leading" secondItem="f1g-yH-xPh" secondAttribute="leading" constant="20" id="BpY-Bw-Uel"/>
-                            <constraint firstItem="yfr-yS-FBJ" firstAttribute="leading" secondItem="Bg4-1R-3BG" secondAttribute="trailing" constant="8" id="H8y-KW-lFi"/>
                             <constraint firstItem="Ik7-Yb-6BK" firstAttribute="leading" secondItem="f8q-VC-hWF" secondAttribute="trailing" constant="8" id="Klw-NP-tG1"/>
-                            <constraint firstAttribute="bottom" secondItem="yfr-yS-FBJ" secondAttribute="bottom" constant="20" id="Q5l-zo-GhJ"/>
                             <constraint firstItem="Ik7-Yb-6BK" firstAttribute="top" secondItem="f1g-yH-xPh" secondAttribute="top" constant="20" id="QBZ-OO-n4R"/>
                             <constraint firstItem="oAs-IR-lb6" firstAttribute="top" secondItem="Ik7-Yb-6BK" secondAttribute="bottom" constant="10" id="V51-yY-OFI"/>
                             <constraint firstItem="ceO-sF-oEg" firstAttribute="leading" secondItem="f1g-yH-xPh" secondAttribute="leading" constant="20" id="aDx-8E-8Zr"/>
                             <constraint firstAttribute="bottom" secondItem="Bg4-1R-3BG" secondAttribute="bottom" constant="20" id="aUI-TK-bQR"/>
                             <constraint firstAttribute="trailing" secondItem="Ik7-Yb-6BK" secondAttribute="trailing" constant="20" id="beK-2S-kin"/>
                             <constraint firstAttribute="trailing" secondItem="oAs-IR-lb6" secondAttribute="trailing" constant="20" id="dtP-6L-jKa"/>
+                            <constraint firstItem="gUD-mf-Alx" firstAttribute="leading" secondItem="Bg4-1R-3BG" secondAttribute="trailing" constant="100" id="jId-bR-rZa"/>
                             <constraint firstItem="f8q-VC-hWF" firstAttribute="leading" secondItem="ceO-sF-oEg" secondAttribute="trailing" constant="8" id="nKS-yB-M0h"/>
                             <constraint firstItem="ceO-sF-oEg" firstAttribute="top" secondItem="f1g-yH-xPh" secondAttribute="top" constant="20" id="oMQ-br-SrC"/>
                             <constraint firstItem="pfk-21-LWg" firstAttribute="leading" secondItem="f1g-yH-xPh" secondAttribute="leading" constant="20" id="rbd-ef-mFH"/>
@@ -120,7 +117,6 @@
                 <outlet property="postImage" destination="pfk-21-LWg" id="7gL-Sy-O3d"/>
                 <outlet property="readNotificationImage" destination="ceO-sF-oEg" id="XEx-5R-ysm"/>
                 <outlet property="removeCellButton" destination="Bg4-1R-3BG" id="XhO-Ep-blt"/>
-                <outlet property="removeLabel" destination="yfr-yS-FBJ" id="xxr-Cp-6pd"/>
                 <outlet property="titleLabel" destination="oAs-IR-lb6" id="xHJ-IX-pR1"/>
             </connections>
             <point key="canvasLocation" x="-70.28985507246378" y="141.29464285714286"/>
@@ -128,6 +124,10 @@
     </objects>
     <resources>
         <image name="blueCircle" width="512" height="512"/>
+        <image name="xmark.rectangle" catalog="system" width="128" height="93"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

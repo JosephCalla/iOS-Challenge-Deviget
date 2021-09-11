@@ -13,7 +13,7 @@ class RedditPostViewController: UIViewController {
     
     private var refreshControl = UIRefreshControl()
     private var selectedPostIndex = 0
-    let viewModel = RedditViewModel()
+    var viewModel = RedditViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,6 @@ class RedditPostViewController: UIViewController {
     private func setupView() {
         self.redditPostTableView.dataSource = self
         self.redditPostTableView.delegate = self
-        
         self.redditPostTableView.register(UINib(nibName: "RedditTableViewCell",
                                                 bundle: nil), forCellReuseIdentifier: "cell")
     }
@@ -33,6 +32,26 @@ class RedditPostViewController: UIViewController {
         viewModel.getAllPosts {
             DispatchQueue.main.async {
                 self.redditPostTableView.reloadData()
+            }
+        }
+    }
+    
+    private func dismissPost(cell: RedditTableViewCell) {
+        guard let index = redditPostTableView.indexPath(for: cell) else { return }
+        redditPostTableView.beginUpdates()
+        redditPostTableView.deleteRows(at: [index], with: .fade)
+        viewModel.posts?.remove(at: index.item)
+        redditPostTableView.endUpdates()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detail" {
+            if let indexPath = redditPostTableView.indexPathForSelectedRow {
+                guard let post = viewModel.posts?[indexPath.row] else { return }
+                
+                let controller = (segue.destination) as! DetailPostViewController
+                
+                controller.postDetail = post
             }
         }
     }
@@ -46,7 +65,12 @@ extension RedditPostViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = redditPostTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? RedditTableViewCell
         let post = viewModel.posts?[indexPath.row]
+        
         cell?.post = post
+        cell?.dismissCell = { [weak self] (cell) in
+            self?.dismissPost(cell: cell)
+        }
+        
         return cell!
     }
     
@@ -56,16 +80,6 @@ extension RedditPostViewController: UITableViewDataSource {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "detail", sender: self)
                 tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
-            }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detail" {
-            if let indexPath = redditPostTableView.indexPathForSelectedRow {
-                guard let post = viewModel.posts?[indexPath.row] else { return }
-                let controller = (segue.destination) as! DetailPostViewController
-                controller.postDetail = post
             }
         }
     }
@@ -79,7 +93,5 @@ extension RedditPostViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
-    }
-    
     }
 }

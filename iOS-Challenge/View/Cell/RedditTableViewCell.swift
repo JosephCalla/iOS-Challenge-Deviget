@@ -7,6 +7,8 @@
 
 import UIKit
 
+typealias DismissCell = (RedditTableViewCell) -> Void
+
 class RedditTableViewCell: UITableViewCell {
     @IBOutlet weak var readNotificationImage: UIImageView!
     @IBOutlet weak var hoursAgoLabel: UILabel!
@@ -15,17 +17,19 @@ class RedditTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var commentsLabel: UILabel!
     @IBOutlet weak var removeCellButton: UIButton!
-    @IBOutlet weak var removeLabel: UILabel!
+    
+    var dismissCell: DismissCell?
+    var hoursAgo = String()
     
     var post: RedditPostResponse? {
         didSet { setupCell(post: post)
         }
     }
-    var hoursAgo = String()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
+        readNotificationImage.isHidden = false
         postImage.image = UIImage(named: "noImageFound")
     }
     
@@ -35,5 +39,16 @@ class RedditTableViewCell: UITableViewCell {
         self.authorLabel.text = post?.author
         self.postImage.setImageFrom(link: post?.thumbnail)
         self.commentsLabel.text = "\(post?.num_comments ?? 0) comments"
+        
+        
+        if let isRead = self.post?.read, isRead {
+            readNotificationImage.isHidden = true
+        }
+    }
+    
+    @IBAction func dismissCell(_ sender: UIButton) {
+        if let callback = dismissCell {
+            callback(self)
+        }
     }
 }
