@@ -12,7 +12,7 @@ extension UIImageView {
     private func fetchFromServer(url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         contentMode = mode
         
-        self.image = UIImage(named: "placeholder")
+        self.image = UIImage(named: "noImageFound")
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard

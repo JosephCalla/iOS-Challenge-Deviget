@@ -40,7 +40,6 @@ class RedditPostViewController: UIViewController {
 
 extension RedditPostViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return viewModel.posts?.count ?? 0
     }
     
@@ -50,7 +49,28 @@ extension RedditPostViewController: UITableViewDataSource {
         cell?.post = post
         return cell!
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedPostIndex = indexPath.item
+        if let posts = viewModel.posts?[indexPath.row] {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "detail", sender: self)
+                tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detail" {
+            if let indexPath = redditPostTableView.indexPathForSelectedRow {
+                guard let post = viewModel.posts?[indexPath.row] else { return }
+                let controller = (segue.destination) as! DetailPostViewController
+                controller.postDetail = post
+            }
+        }
+    }
 }
+
 
 extension RedditPostViewController: UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,6 +78,8 @@ extension RedditPostViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 190
+        return 200
+    }
+    
     }
 }

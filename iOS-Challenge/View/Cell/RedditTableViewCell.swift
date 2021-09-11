@@ -25,6 +25,7 @@ class RedditTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         postImage.image = UIImage(named: "noImageFound")
     }
     
