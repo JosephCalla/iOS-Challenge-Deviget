@@ -11,7 +11,7 @@ class RedditPostViewController: UIViewController {
     @IBOutlet weak var redditPostTableView: UITableView!
     @IBOutlet weak var loadSpineer: UIActivityIndicatorView!
     @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var TitleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var postImage: UIImageView!
     
     private var refreshControl = UIRefreshControl()
@@ -90,7 +90,7 @@ extension RedditPostViewController: UITableViewDataSource {
                     if let posts = viewModel.posts?[indexPath.row] {
                         DispatchQueue.main.async {
                             self.authorLabel.text = posts.author
-                            self.TitleLabel.text = posts.title
+                            self.titleLabel.text = posts.title
                             self.postImage.setImageFrom(link: posts.thumbnail)
                             tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
                         }
