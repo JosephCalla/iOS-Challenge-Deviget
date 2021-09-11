@@ -21,7 +21,8 @@ class RedditPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        getPosts()
+        pullToRefresh()
+        loadFirstPage()
     }
     
     private func setupView() {
@@ -31,13 +32,34 @@ class RedditPostViewController: UIViewController {
                                                 bundle: nil), forCellReuseIdentifier: "cell")
     }
     
-    private func getPosts() {
-        viewModel.getAllPosts {
+    private func pullToRefresh() {
+        refreshControl.tintColor = .lightGray
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh!", attributes: [.foregroundColor: UIColor.white])
+        refreshControl.addTarget(self, action: #selector(refreshPosts), for: UIControl.Event.valueChanged)
+        redditPostTableView.addSubview(refreshControl)
+    }
+    
+    @objc func refreshPosts() {
+        loadFirstPage()
+    }
+    
+    private func loadFirstPage() {
+        loadSpineer.startAnimating()
+        viewModel.getAllPosts(true) { data, _ in
             DispatchQueue.main.async {
+                self.redditPostTableView.isHidden = false
+                self.loadSpineer.stopAnimating()
                 self.redditPostTableView.reloadData()
+                print("PRINT")
+                self.refreshControl.endRefreshing()
+            }
+            if (data?.isEmpty == true) {
+                self.getNextPage()
+                return
             }
         }
     }
+    
     
     private func dismissPost(cell: RedditTableViewCell) {
         guard let index = redditPostTableView.indexPath(for: cell) else { return }
@@ -49,14 +71,16 @@ class RedditPostViewController: UIViewController {
     
     private func dismissAllPost() {
         viewModel.posts?.removeAll()
-        redditPostTableView.reloadData()
         getNextPage()
     }
     
     private func getNextPage() {
-        viewModel.getAllPosts {
+        loadSpineer.startAnimating()
+        viewModel.getAllPosts(false) { _,_ in
             DispatchQueue.main.async {
                 self.redditPostTableView.reloadData()
+                self.loadSpineer.stopAnimating()
+                self.redditPostTableView.isHidden = false
             }
         }
     }
@@ -74,6 +98,7 @@ class RedditPostViewController: UIViewController {
     }
     
     @IBAction func dismissAll(_ sender: UIButton) {
+        viewModel.posts = []
         dismissAllPost()
     }
 }

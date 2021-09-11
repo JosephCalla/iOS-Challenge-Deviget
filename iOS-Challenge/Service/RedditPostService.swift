@@ -17,8 +17,8 @@ class RedditPostService {
     var redditData: RedditData?
     var posts = [PostsResponse]()
     
-    func getAllPosts(_ completion: @escaping PostsResponse) {
-        getPostsURL(firstPage: false) {[unowned self] (data, errorMessage) in
+    func getAllPosts(_ firstPage: Bool,_ completion: @escaping PostsResponse) {
+        getPostsURL(firstPage: firstPage) {[unowned self] (data, errorMessage) in
             guard errorMessage == nil || (errorMessage?.isEmpty)! else { return }
             completion(data, errorMessage)
         }
@@ -37,6 +37,7 @@ class RedditPostService {
                 var post: [RedditPostResponse]?
                 self?.redditData = response.data
                 post = response.data.children.map { $0.data }
+                
                 completion(post, nil)
                 
             case .failure(let error):

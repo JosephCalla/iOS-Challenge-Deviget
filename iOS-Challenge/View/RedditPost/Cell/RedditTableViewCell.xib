@@ -37,7 +37,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maggie Loves " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAs-IR-lb6">
-                                <rect key="frame" x="108" y="61" width="253" height="50"/>
+                                <rect key="frame" x="108" y="61" width="253" height="97"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="JXk-ZP-lWw"/>
                                 </constraints>
@@ -67,10 +67,10 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeS-70-zHS">
-                                <rect key="frame" x="0.0" y="111" width="381" height="97"/>
+                                <rect key="frame" x="0.0" y="158" width="381" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bg4-1R-3BG">
-                                        <rect key="frame" x="20" y="57" width="111" height="20"/>
+                                        <rect key="frame" x="20" y="10" width="111" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="fpT-Yu-vuq"/>
                                         </constraints>
@@ -83,13 +83,14 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12430 comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUD-mf-Alx">
-                                        <rect key="frame" x="260.5" y="62.5" width="100.5" height="14.5"/>
+                                        <rect key="frame" x="260.5" y="15.5" width="100.5" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                         <color key="textColor" systemColor="systemYellowColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="AbB-9M-duC"/>
                                     <constraint firstAttribute="bottom" secondItem="gUD-mf-Alx" secondAttribute="bottom" constant="20" id="B9P-OV-01P"/>
                                     <constraint firstAttribute="trailing" secondItem="gUD-mf-Alx" secondAttribute="trailing" constant="20" id="Qdf-Oq-a9Z"/>
                                     <constraint firstItem="Bg4-1R-3BG" firstAttribute="leading" secondItem="xeS-70-zHS" secondAttribute="leading" constant="20" id="mLM-oK-YrS"/>
