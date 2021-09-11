@@ -22,7 +22,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UbO-fe-IxI">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1194"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="aEc-Kv-Oyo">
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="pYu-QY-0Tq">
+                                                <rect key="frame" x="157" y="547" width="100" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="KMC-3U-HLn"/>
+                                                    <constraint firstAttribute="height" constant="100" id="ryL-zc-7Pz"/>
+                                                </constraints>
+                                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </activityIndicatorView>
+                                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="aEc-Kv-Oyo">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1114"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -57,9 +65,11 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="pYu-QY-0Tq" firstAttribute="centerX" secondItem="UbO-fe-IxI" secondAttribute="centerX" id="0lZ-62-OSl"/>
                                             <constraint firstAttribute="trailing" secondItem="1hc-Ih-FrJ" secondAttribute="trailing" id="4ew-19-r2Q"/>
                                             <constraint firstAttribute="bottom" secondItem="1hc-Ih-FrJ" secondAttribute="bottom" id="52m-Q6-3wa"/>
                                             <constraint firstAttribute="trailing" secondItem="aEc-Kv-Oyo" secondAttribute="trailing" id="Mo0-7z-Bud"/>
+                                            <constraint firstItem="pYu-QY-0Tq" firstAttribute="centerY" secondItem="UbO-fe-IxI" secondAttribute="centerY" id="OoQ-aK-NCt"/>
                                             <constraint firstItem="1hc-Ih-FrJ" firstAttribute="top" secondItem="aEc-Kv-Oyo" secondAttribute="bottom" id="hcP-92-6id"/>
                                             <constraint firstItem="1hc-Ih-FrJ" firstAttribute="leading" secondItem="UbO-fe-IxI" secondAttribute="leading" id="sEr-Fd-vhi"/>
                                             <constraint firstItem="aEc-Kv-Oyo" firstAttribute="top" secondItem="UbO-fe-IxI" secondAttribute="top" id="sU7-D8-w6S"/>
@@ -120,6 +130,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="authorLabel" destination="XEQ-sx-st5" id="1eY-oG-8w2"/>
+                        <outlet property="loadSpineer" destination="pYu-QY-0Tq" id="SLr-Uh-H7U"/>
                         <outlet property="postImage" destination="828-qh-nyo" id="BtT-Hf-fWr"/>
                         <outlet property="redditPostTableView" destination="aEc-Kv-Oyo" id="aBB-hh-1uh"/>
                         <outlet property="titleLabel" destination="w9z-Bt-sCB" id="Mba-Yg-72f"/>
