@@ -62,6 +62,8 @@
 			children = (
 				9681F7A926EAD73200F3448E /* RedditPostViewController.swift */,
 				9681F7AC26EAD74800F3448E /* RedditPost.storyboard */,
+				9633DACC26EC334A006D449E /* DetailPost */,
+				9681F01C26EAE3410002D04D /* Cell */,
 			);
 			path = RedditPost;
 			sourceTree = "<group>";
@@ -147,8 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				9633DACB26EC333C006D449E /* RedditPost */,
-				9633DACC26EC334A006D449E /* DetailPost */,
-				9681F01C26EAE3410002D04D /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
