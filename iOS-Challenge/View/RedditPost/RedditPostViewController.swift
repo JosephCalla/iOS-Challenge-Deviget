@@ -16,7 +16,9 @@ class RedditPostViewController: UIViewController {
     
     private var refreshControl = UIRefreshControl()
     private var selectedPostIndex = 0
+    private var isFirst = false
     var viewModel = RedditViewModel()
+    var postDeleted: [RedditPostResponse] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +42,17 @@ class RedditPostViewController: UIViewController {
     }
     
     @objc func refreshPosts() {
-        loadFirstPage()
-    }
+        DispatchQueue.main.async {
+            self.redditPostTableView.reloadData()
+            self.loadSpineer.stopAnimating()
+            self.refreshControl.endRefreshing()
+        }    }
     
     private func loadFirstPage() {
         loadSpineer.startAnimating()
-        viewModel.getAllPosts(true) { data, _ in
+        viewModel.getAllPosts(!isFirst) { data, _ in
             DispatchQueue.main.async {
+                self.isFirst = false
                 self.redditPostTableView.isHidden = false
                 self.loadSpineer.stopAnimating()
                 self.redditPostTableView.reloadData()
@@ -65,11 +71,17 @@ class RedditPostViewController: UIViewController {
         guard let index = redditPostTableView.indexPath(for: cell) else { return }
         redditPostTableView.beginUpdates()
         redditPostTableView.deleteRows(at: [index], with: .fade)
-        viewModel.posts?.remove(at: index.item)
+        if let post = viewModel.posts?[index.row] {
+            viewModel.deletePost(post: post)
+            viewModel.posts?.remove(at: index.row)
+        }
         redditPostTableView.endUpdates()
     }
     
     private func dismissAllPost() {
+        for post in self.viewModel.posts! {
+            viewModel.deletePost(post: post)
+        }
         viewModel.posts?.removeAll()
         getNextPage()
     }
