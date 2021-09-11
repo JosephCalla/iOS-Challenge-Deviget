@@ -23,6 +23,7 @@
 		9681F79D26EAD4A700F3448E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9681F79B26EAD4A700F3448E /* LaunchScreen.storyboard */; };
 		9681F7AA26EAD73200F3448E /* RedditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9681F7A926EAD73200F3448E /* RedditPostViewController.swift */; };
 		9681F7AD26EAD74800F3448E /* RedditPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9681F7AC26EAD74800F3448E /* RedditPost.storyboard */; };
+		96862CFF26EC7660001B5101 /* RedditPostIPAD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96862CFE26EC7660001B5101 /* RedditPostIPAD.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		9681F79E26EAD4A700F3448E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9681F7A926EAD73200F3448E /* RedditPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditPostViewController.swift; sourceTree = "<group>"; };
 		9681F7AC26EAD74800F3448E /* RedditPost.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RedditPost.storyboard; sourceTree = "<group>"; };
+		96862CFE26EC7660001B5101 /* RedditPostIPAD.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RedditPostIPAD.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				9681F7A926EAD73200F3448E /* RedditPostViewController.swift */,
 				9681F7AC26EAD74800F3448E /* RedditPost.storyboard */,
+				96862CFE26EC7660001B5101 /* RedditPostIPAD.storyboard */,
 				9633DACC26EC334A006D449E /* DetailPost */,
 				9681F01C26EAE3410002D04D /* Cell */,
 			);
@@ -218,6 +221,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96862CFF26EC7660001B5101 /* RedditPostIPAD.storyboard in Resources */,
 				9681F79D26EAD4A700F3448E /* LaunchScreen.storyboard in Resources */,
 				9681F79A26EAD4A700F3448E /* Assets.xcassets in Resources */,
 				9681F7AD26EAD74800F3448E /* RedditPost.storyboard in Resources */,
