@@ -37,8 +37,11 @@
                                 <rect key="frame" x="0.0" y="816" width="414" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Tb-hy-h8q">
-                                        <rect key="frame" x="20" y="25" width="374" height="30"/>
+                                        <rect key="frame" x="20" y="20" width="374" height="40"/>
                                         <state key="normal" title="Dismiss All"/>
+                                        <connections>
+                                            <action selector="dismissAll:" destination="IeQ-oa-1uV" eventType="touchUpInside" id="V5e-9C-I24"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -46,6 +49,8 @@
                                     <constraint firstAttribute="trailing" secondItem="7Tb-hy-h8q" secondAttribute="trailing" constant="20" id="2w7-Sn-7S0"/>
                                     <constraint firstAttribute="height" constant="80" id="38C-3T-xnH"/>
                                     <constraint firstItem="7Tb-hy-h8q" firstAttribute="centerY" secondItem="N0X-FI-Tw2" secondAttribute="centerY" id="9Eb-yg-D0b"/>
+                                    <constraint firstAttribute="bottom" secondItem="7Tb-hy-h8q" secondAttribute="bottom" constant="20" id="Rh5-ZX-1B5"/>
+                                    <constraint firstItem="7Tb-hy-h8q" firstAttribute="top" secondItem="N0X-FI-Tw2" secondAttribute="top" constant="20" id="srV-nm-gnC"/>
                                     <constraint firstItem="7Tb-hy-h8q" firstAttribute="leading" secondItem="N0X-FI-Tw2" secondAttribute="leading" constant="20" id="xPx-zx-mRl"/>
                                 </constraints>
                             </view>

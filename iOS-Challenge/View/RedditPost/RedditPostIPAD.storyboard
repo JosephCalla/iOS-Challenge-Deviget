@@ -35,18 +35,23 @@
                                                 <rect key="frame" x="0.0" y="1114" width="414" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxI-ri-7Nk">
-                                                        <rect key="frame" x="168.5" y="25" width="77" height="30"/>
+                                                        <rect key="frame" x="20" y="20" width="374" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                         <state key="normal" title="Dismiss All">
                                                             <color key="titleColor" red="0.57380741830000004" green="0.56553578380000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="dismissAll:" destination="ahS-gJ-2hY" eventType="touchUpInside" id="2cu-Fe-lEd"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="rxI-ri-7Nk" firstAttribute="top" secondItem="1hc-Ih-FrJ" secondAttribute="top" constant="20" id="DK7-Mf-B23"/>
+                                                    <constraint firstAttribute="trailing" secondItem="rxI-ri-7Nk" secondAttribute="trailing" constant="20" id="FNs-H8-I2M"/>
                                                     <constraint firstAttribute="height" constant="80" id="J8L-T1-XpN"/>
-                                                    <constraint firstItem="rxI-ri-7Nk" firstAttribute="centerY" secondItem="1hc-Ih-FrJ" secondAttribute="centerY" id="Pkx-oP-ZLo"/>
-                                                    <constraint firstItem="rxI-ri-7Nk" firstAttribute="centerX" secondItem="1hc-Ih-FrJ" secondAttribute="centerX" id="wWU-WP-ZAl"/>
+                                                    <constraint firstAttribute="bottom" secondItem="rxI-ri-7Nk" secondAttribute="bottom" constant="20" id="n75-pp-lzh"/>
+                                                    <constraint firstItem="rxI-ri-7Nk" firstAttribute="leading" secondItem="1hc-Ih-FrJ" secondAttribute="leading" constant="20" id="yuS-Ta-xC3"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
