@@ -47,6 +47,20 @@ class RedditPostViewController: UIViewController {
         redditPostTableView.endUpdates()
     }
     
+    private func dismissAllPost() {
+        viewModel.posts?.removeAll()
+        redditPostTableView.reloadData()
+        getNextPage()
+    }
+    
+    private func getNextPage() {
+        viewModel.getAllPosts {
+            DispatchQueue.main.async {
+                self.redditPostTableView.reloadData()
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detail" {
             if let indexPath = redditPostTableView.indexPathForSelectedRow {
@@ -57,6 +71,10 @@ class RedditPostViewController: UIViewController {
                 controller.postDetail = post
             }
         }
+    }
+    
+    @IBAction func dismissAll(_ sender: UIButton) {
+        dismissAllPost()
     }
 }
 

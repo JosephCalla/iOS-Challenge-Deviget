@@ -14,24 +14,29 @@ class RedditPostService {
     var dataTask: URLSessionDataTask?
     var errorMessage: String = ""
     let baseURL = "https://www.reddit.com/top.json"
+    var redditData: RedditData?
     var posts = [PostsResponse]()
     
     func getAllPosts(_ completion: @escaping PostsResponse) {
-        getPostsURL(after: nil, before: nil) {[unowned self] (data, errorMessage) in
+        getPostsURL(firstPage: false) {[unowned self] (data, errorMessage) in
             guard errorMessage == nil || (errorMessage?.isEmpty)! else { return }
             completion(data, errorMessage)
         }
     }
     
-    func getPostsURL(after: String?, before: String?, completion: @escaping PostsResponse) {
+    func getPostsURL(firstPage: Bool = false, completion: @escaping PostsResponse) {
         dataTask?.cancel()
-        guard let  url = URL(string: baseURL) else { return }
-        dataTask = URLSession.shared.jsonDecodableTask(with: url) { (result: Result<RedditResponse, Error>) in
+        var urlComponents = URLComponents(string: baseURL)
+        
+        urlComponents?.queryItems = [ URLQueryItem(name: "after", value: firstPage ? "" : redditData?.after) ]
+        let url = urlComponents?.url
+            
+        dataTask = URLSession.shared.jsonDecodableTask(with: url!) { [weak self] (result: Result<RedditResponse, Error>) in
             switch result {
             case .success(let response):
                 var post: [RedditPostResponse]?
+                self?.redditData = response.data
                 post = response.data.children.map { $0.data }
-                print("Response --> \(post)")
                 completion(post, nil)
                 
             case .failure(let error):
